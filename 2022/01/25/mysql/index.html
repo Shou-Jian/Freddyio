@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="MYSQL基础"><meta name="keywords" content="mysql"><meta name="author" content="Shou Jian/Freddy"><meta name="copyright" content="Shou Jian/Freddy"><title>MYSQL基础 | Freddy.io</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '6.3.0'
+} </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Freddy.io" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1、什么是数据库？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">2.</span> <span class="toc-text">2.数据库存储的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">3.常见数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-MySql-%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">4.MySql 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Mysql-%E5%9F%BA%E7%A1%80"><span class="toc-number">5.</span> <span class="toc-text">5.Mysql 基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-SQL-%E8%AF%AD%E8%A8%80%E5%88%86%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">6.SQL 语言分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81DQL%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="toc-number">7.</span> <span class="toc-text">7、DQL：数据查询语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E7%B4%A2%E5%BC%95"><span class="toc-number">8.</span> <span class="toc-text">8.索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-MySql-%E4%BA%8B%E5%8A%A1"><span class="toc-number">9.</span> <span class="toc-text">9.MySql 事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E8%A7%86%E5%9B%BE"><span class="toc-number">10.</span> <span class="toc-text">10.视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E8%A7%86%E5%9B%BE%E5%AE%9A%E4%B9%89"><span class="toc-number">10.1.</span> <span class="toc-text">（1）视图定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E8%A7%86%E5%9B%BE%E4%BD%9C%E7%94%A8"><span class="toc-number">10.2.</span> <span class="toc-text">（2）视图作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">10.3.</span> <span class="toc-text">（3）视图的优缺点</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.vika.cn/space/2022/09/12/668a343b2d584517a39787dba68f8fbd"></div><div class="author-info__name text-center">Shou Jian/Freddy</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">11</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">7</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.vika.cn/space/2022/09/12/e9596066c4794094888ea5e53f712030)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Freddy.io</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">MYSQL基础</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-01-25</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="1、什么是数据库？"><a href="#1、什么是数据库？" class="headerlink" title="1、什么是数据库？"></a>1、什么是数据库？</h2><p>数据库是用来存储和管理数据的仓库。</p>
+<h2 id="2-数据库存储的好处"><a href="#2-数据库存储的好处" class="headerlink" title="2.数据库存储的好处"></a>2.数据库存储的好处</h2><p>1、可存储大量数据；</p>
+<p>2、方便检索；</p>
+<p>3、保持数据的一致性、完整性；</p>
+<p>4、安全性，可共享性</p>
+<h2 id="3-常见数据库"><a href="#3-常见数据库" class="headerlink" title="3.常见数据库"></a>3.常见数据库</h2><p>1、Oracle2、SQL Server3、DB2 </p>
+<p>4、<strong>MySql</strong> 优点：体积小、速度快、总体拥有成本低</p>
+<h2 id="4-MySql-安装"><a href="#4-MySql-安装" class="headerlink" title="4.MySql 安装"></a>4.MySql 安装</h2><p>字符集基本使用UTF-8 端口默认3306</p>
+<h2 id="5-Mysql-基础"><a href="#5-Mysql-基础" class="headerlink" title="5.Mysql 基础"></a>5.Mysql 基础</h2><p>三种存储引擎：InnoDB-常用（默认）     支持事务安全表，支持行锁定和外键，需要注意InnoDB是默认的MySQL引擎。  </p>
+<p><img src="https://s1.vika.cn/space/2022/09/12/e28ffbf30205493a8bbc1c515a4f2386"></p>
+<p><img src="https://s1.vika.cn/space/2022/09/12/f43b47c791f247b98c676262e9804b2b"></p>
+<p><img src="https://s1.vika.cn/space/2022/09/12/b33e083c474d4ae4a1f4de161bfe719d"></p>
+<p><img src="https://s1.vika.cn/space/2022/09/12/8a90974ff4ce45de87d5f3adc64a04e3"></p>
+<p><strong>float单精度</strong>存储浮点类型的话就是4x8&#x3D;<strong>32位</strong>的长度,所以float单精度浮点数在内存中占<strong>4</strong>个字节，并且用<strong>32位二进制</strong>。</p>
+<p> <strong>double双精度</strong>存储浮点类型就是8x8&#x3D;<strong>64位</strong>的长度,所以double双精度浮点数在内存中占<strong>8</strong>个字节，并且用<strong>64位</strong>二进制。</p>
+<p><img src="https://s1.vika.cn/space/2022/09/12/e90896a100574f3c898500bb30cd27d0"></p>
+<h2 id="6-SQL-语言分类"><a href="#6-SQL-语言分类" class="headerlink" title="6.SQL 语言分类"></a>6.SQL 语言分类</h2><p>1、DDL：数据定义语言，用来定义数据库对象：库、表、列等，常见关键字CREATE、DROP、ALTER等等；</p>
+<p> 2、DML：数据操作语言，用来定义数据库记录，常见关键字INSERT、UPDATE、DELETE等；</p>
+<p> 3、DCL：数据控制语言，用来定义访问权限和安全级别；</p>
+<p> <strong>4、DQL：数据查询语言，用来查询记录，SELECT相关关键字。</strong></p>
+<p>7.DDL 数据定义语言</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 1、创建数据库</span><br><span class="line">CREATE DATABASE IF NOT EXISTS change818; -- 建立change818数据库（IF NOT EXISTS可以不写，但是数据库名不能重复）</span><br><span class="line">-- 2、创建数据库并指定字符集</span><br><span class="line">CREATE DATABASE IF NOT EXISTS change818 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; </span><br><span class="line">-- 3、查看所有数据库名称</span><br><span class="line">SHOW DATABASES;</span><br><span class="line">-- 4、切换到change818数据库</span><br><span class="line">USE change818;</span><br><span class="line">-- 5、删除数据库</span><br><span class="line">DROP DATABASE IF EXISTS change818; -- 删除change818的数据库（IF EXISTS可以不写，但是数据库名必须存在）</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建</strong><br>    语法<br>        CREATE TABLE 表名 (列名1 列类型,列名2 列类型,列名3 列类型);<br>    举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE student (</span><br><span class="line">	id INT (11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">	stu_no VARCHAR (10) NOT NULL,</span><br><span class="line">	stu_name VARCHAR (20) NOT NULL</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改</strong><br>    <strong>添加列</strong><br>        语法<br>            ALTER TABLE 表名 ADD(列字段 VARCHAR(100));<br>        举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE student ADD(update_date DATETIME); </span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>修改列</strong><br>​		语法<br>​			ALTER TABLE 表名 MODIFY 列字段 CHAR(2);<br>​		举例		</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE student MODIFY update_date DATE;</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>修改列名</strong><br>​		语法<br>​			ALTER TABLE 表名 CHANGE 原列字段名 新列字段名 CHAR(2);<br>​		举例		</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE student change update_date update_date datetime;</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>删除列</strong><br>​		语法<br>​			ALTER TABLE 表名 DROP 列名;<br>​		举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE student DROP update_date1;</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>修改表名称</strong><br>​		语法<br>​			ALTER TABLE 原表名 RENAME TO 新表名;<br>​		举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE student RENAME TO student1;</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据库表操作</strong><br>    <strong>新增数据</strong><br>        语法<br>            INSERT INTO 表名(列名1,列名2) VALUES (值1,值2)；<br>        举例		</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO student (stu_no,stu_name,age,sex,create_date) VALUES (&#x27;stu_1&#x27;, &#x27;刘一&#x27;, 22, &#x27;男&#x27;, &#x27;2018-02-01 00:00:00&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>修改数据</strong><br>​		语法<br>​			UPDATE 表名 SET 列名1&#x3D;值1,列名n&#x3D;值n[ WHERE 条件]<br>​		举例			</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE student SET age=23 WHERE stu_no=&#x27;stu_1&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>删除数据</strong><br>​		语法<br>​			DELETE FROM 表名[ WHERE 条件]<br>​		举例		</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM student WHERE stu_no=&#x27;stu_1&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、DQL：数据查询语言"><a href="#7、DQL：数据查询语言" class="headerlink" title="7、DQL：数据查询语言"></a>7、DQL：数据查询语言</h2><p><strong>基础查询</strong></p>
+<p>– SELECT 列名称1 , 列名称2 FROM 表名称;</p>
+<p>– 查询学生表所有信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student;</span><br></pre></td></tr></table></figure>
+
+<p>– 查询学生信息，要求显示学号、姓名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT stu_no,stu_name FROM student;</span><br></pre></td></tr></table></figure>
+
+<p><strong>– 条件运算符</strong><br><strong>– 1、&#x3D;  !&#x3D;  &lt;&gt;  &lt;  &lt;&#x3D;  &gt;  &gt;&#x3D;</strong><br><strong>– 2、BETWEEN…AND 在什么条件之间的</strong><br><strong>– 3、IN()   在什么集合里面</strong><br><strong>– 4、IS NULL  条件是空</strong><br><strong>– 5、AND  并且，多个条件全部满足</strong><br><strong>– 6、OR  或者，多个条件有一个满足就行</strong><br><strong>– 7、NOT  取反，真为假假为真</strong><br><strong>– 8、IS NOT NULL  条件不为空</strong></p>
+<p>– 条件查询案例<br>– 1、查询性别为女，并且年龄等于21的记录（&#x3D;、and）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student WHERE sex = &#x27;女&#x27; AND age = 21;</span><br></pre></td></tr></table></figure>
+
+<p><strong>– LIKE 模糊查询用法</strong><br><strong>– 1、’_’字母占位符</strong><br><strong>– 2、’%’任意字符匹配符</strong></p>
+<p>– LIKE 模糊查询案例</p>
+<p>– <strong>4、查询姓名中第2个字母为“i”的学生记录</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student WHERE stu_name LIKE &#x27;_i%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>– 给表取别名<br>– 给列取别名</p>
+<p>– 作用：方便、增强可读性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT *,IFNULL(t.age,0)  (AS) age_1 FROM student t ;</span><br></pre></td></tr></table></figure>
+
+<p><strong>聚合函数</strong></p>
+<p>– 1、统计：COUNT()<br>–  2、最大值：MAX()<br>–  3、最小值：MIN()<br>–  4、求和：SUM()<br>–  5、求平均值：AVG()</p>
+<p><strong>– 1、ORDER BY 排序</strong><br><strong>– 2、GROUP BY分组查询</strong><br><strong>– 3、HAVING子句  WHERE是对“分组前”记录的条件筛选，如果某行记录没有满足WHERE子句的条件，那么这行记录不会参加分组；而HAVING是对“分组后”数据的约束（两者区别非常重要）</strong></p>
+<p>– 4、LIMIT分页查询</p>
+<p>– 1、查询所有学生记录，按年龄升序排序(默认为升序：ASC)</p>
+<p>– 2、查询所有学生记录，按年龄降序排序(<strong>降序:DESC)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student ORDER BY age DESC,stu_no ASC;</span><br></pre></td></tr></table></figure>
+
+<p>– 3、查询学生成绩表，找出各科最高成绩和课程编号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> SELECT * FROM score;</span><br><span class="line">SELECT MAX(stu_score),course_no FROM score GROUP BY course_no;</span><br></pre></td></tr></table></figure>
+
+<p>– 4、查询每门课程的平均成绩，显示平均成绩和课程编号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(stu_score),course_no FROM score GROUP BY course_no;</span><br></pre></td></tr></table></figure>
+
+<p>– 5、查询每门课程的平均成绩，并找出平均成绩大于60分的课程编号和平均成绩having配合group by 不会单独使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(stu_score) AS avg_score,course_no FROM score GROUP BY course_no HAVING avg_score &gt; 60;</span><br></pre></td></tr></table></figure>
+
+<p>– 6、查询学生表前5行记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student LIMIT 0,5;</span><br></pre></td></tr></table></figure>
+
+<p><strong>1、联合查询（UNION、UNION ALL）</strong><br><strong>2、内连接 （INNER JOIN ON）</strong><br><strong>3、左链接 （LEFT JOIN ON）</strong><br><strong>4、右链接（RIGHT JOIN ON）</strong></p>
+<p>1、查询美国部门和中国部门所有员工姓名，要求不能用重复姓名（UNION）<br>UNION<br>    : 两个SELECT或两个以上的连接在一起 SELECT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	t1.`name`</span><br><span class="line">FROM</span><br><span class="line">	employees_usa t1</span><br><span class="line">UNION</span><br><span class="line">	SELECT</span><br><span class="line">		t2.`name`</span><br><span class="line">	FROM</span><br><span class="line">		employees_china t2;</span><br></pre></td></tr></table></figure>
+
+<p>2、查询美国部门和中国部门所有员工姓名（UNION ALL）<br>UNION ALL<br>    : 两个SELECT或两个以上的连接在一起去重 SELECT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	t1.`name`</span><br><span class="line">FROM</span><br><span class="line">	employees_usa t1</span><br><span class="line">UNION ALL</span><br><span class="line">	SELECT</span><br><span class="line">		t2.`name`</span><br><span class="line">	FROM</span><br><span class="line">		employees_china t2;</span><br></pre></td></tr></table></figure>
+
+<p>3、查询学生所有成绩，要求显示学号、姓名、成绩（使用内连接 &#x3D;<br>INNER JOIN ON） </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> SELECT</span><br><span class="line"> 	t1.stu_no,</span><br><span class="line">​	t1.stu_name,</span><br><span class="line">​	t2.stu_score</span><br><span class="line">FROM</span><br><span class="line">​	student t1,</span><br><span class="line">​	score t2</span><br><span class="line">WHERE</span><br><span class="line">​	t1.stu_no = t2.stu_no;</span><br><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">	t1.stu_no,</span><br><span class="line">	t1.stu_name,</span><br><span class="line">	t2.stu_score</span><br><span class="line">FROM</span><br><span class="line">	student t1</span><br><span class="line">INNER JOIN score t2 ON t1.stu_no = t2.stu_no;</span><br></pre></td></tr></table></figure>
+
+<p>4、查询学生所有成绩，要求显示学号、姓名、成绩（使用左连接（LEFT JSON ON）、右连接（RIGHT<br>JOIN ON））理解 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	t1.stu_no,</span><br><span class="line">	t1.stu_name,</span><br><span class="line">	t2.stu_score</span><br><span class="line">FROM</span><br><span class="line">	student t1</span><br><span class="line">LEFT JOIN score t2 ON t1.stu_no = t2.stu_no;</span><br><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">	t1.stu_no,</span><br><span class="line">	t1.stu_name,</span><br><span class="line">	t2.stu_score</span><br><span class="line">FROM</span><br><span class="line">	student t1</span><br><span class="line">RIGHT JOIN score t2 ON t1.stu_no = t2.stu_no;</span><br></pre></td></tr></table></figure>
+
+<p>– 什么是子查询：</p>
+<p>子查询就是嵌套查询，即 SELECT 中包含SELECT，如果一条语句中存在两个或两个以上 SELECT就是子查询1. FROM后，作为被查询的一条表</p>
+<ol start="2">
+<li>WHERE后，作为条件的一部分</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	sc.course_no,</span><br><span class="line">	sc.stu_no,</span><br><span class="line">	stu1.stu_name,</span><br><span class="line">	sc.stu_score</span><br><span class="line">FROM</span><br><span class="line">	score sc,</span><br><span class="line">	(</span><br><span class="line">		SELECT</span><br><span class="line">			stu_no,stu_name</span><br><span class="line">		FROM</span><br><span class="line">			student</span><br><span class="line">		WHERE</span><br><span class="line">			stu_name = &#x27;王五&#x27;</span><br><span class="line">	) stu1</span><br><span class="line">WHERE</span><br><span class="line">	sc.stu_no = stu1.stu_no;</span><br></pre></td></tr></table></figure>
+
+<p><strong>– 定义变量：</strong><br><strong>– 1、set@num&#x3D;1;或set@num:&#x3D;1;</strong><br><strong>– 2、select@num:&#x3D;1 （以临时表形式存在）</strong></p>
+<p>– 1、查询学生平均成绩，按照降序排序，并显示名次、学号、平均成绩</p>
+<p>– 查询学生平均成绩，按照降序排序，显示学号、平均成绩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    @ranking :=@ranking + 1 AS ranking,</span><br><span class="line">    t1.stu_no,</span><br><span class="line">    t1.avg_score</span><br><span class="line">FROM</span><br><span class="line">    (</span><br><span class="line">        SELECT</span><br><span class="line">            sc.stu_no,</span><br><span class="line">            avg(sc.stu_score) AS avg_score</span><br><span class="line">        FROM</span><br><span class="line">            score sc</span><br><span class="line">        GROUP BY</span><br><span class="line">            sc.stu_no</span><br><span class="line">        ORDER BY</span><br><span class="line">            avg_score DESC</span><br><span class="line">    ) t1,</span><br><span class="line">    (SELECT @ranking := 0) t2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-索引"><a href="#8-索引" class="headerlink" title="8.索引"></a>8.索引</h2><p><strong>索引</strong>：索引是对数据库表中一列或多列的值进行排序的一种结构<br>优点：</p>
+<p><strong>索引可以大大提高MySQL的检索速度,通过创建唯一性索引 .</strong></p>
+<p>可以保证数据库表中每一行数据的唯一性。</p>
+<p>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</p>
+<p>缺点：</p>
+<p><strong>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加</strong><br>索引需要占物理空间，除了数据表占用数据空间之外，每一个索引还要占用一定的物理空间<br>对表中的数据进行增、删、改的时候，索引也要动态的维护，这就降低了整数的维护速度<br>如果某个数据列包含许多重复的内容，为它建立索引就没有太大的实际效果</p>
+<p>应该创建索引的列</p>
+<p><strong>在经常需要搜索的列上，可以加快搜索的速度；</strong><br>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>在经常需要根据范围（&lt;，&lt;&#x3D;，&#x3D;，&gt;，&gt;&#x3D;）进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>在经常需要排序（order by）的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；<br>在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</p>
+<p>不该创建索引的列</p>
+<p>对于那些在查询中很少使用或者参考的列不应该创建索引；<br>对于那些只有很少数据值或者重复值多的列也不应该增加索引；<br>对于那些定义为text,image和bit数据类型的列不应该增加索引，这些列的数据量要么相当大，要么取值很少；<br>当该列修改性能要求远远高于检索性能时，不应该创建索引。（修改性能和检索性能是互相矛盾的）</p>
+<p><strong>索引类型：</strong></p>
+<p>a、主键索引,一张表只能有一个主键索引，不允许重复、不允许为NULL</p>
+<ul>
+<li><p>ALTER TABLE TableName ADD PRIMARY KEY(column_list);</p>
+</li>
+<li><p>ALTER TABLE test ADD PRIMARY KEY (id);</p>
+</li>
+</ul>
+<p>​		b、唯一索引，</p>
+<p>数据列不允许重复，允许为 NULL 值，一张表可有多个唯一索引，索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一<br>– 			ALTER TABLE table_name ADD UNIQUE(column_list);<br>– 				ALTER TABLE test ADD UNIQUE (test_no);</p>
+<p>– 		c、普通索引</p>
+<p>一张表可以创建多个普通索引，一个普通索引可以包含多个字段，允许数据重复，允许NULL值插入</p>
+<p>– 			ALTER TABLE table_name ADD INDEX IndexName(<code>字段名</code>(length));<br>– 				ALTER TABLE test ADD INDEX test_name_index(<code>test_name</code>(15));</p>
+<p>– 		d、组合索引</p>
+<p>一个组合索引包含两个或两个以上的列，组合索引“最左原则”</p>
+<p>– 			CREATE INDEX index_name ON table_name(col_name_1 , col_name_2);-创建普通组合索引<br>                CREATE INDEX test_no_name ON test(test_no,test_name);创建唯一组合索引</p>
+<p>组合索引，列的顺序非常重要，例如：假设存在组合索引(c1,c2)；<br>查询语句select * from t1 where c1&#x3D;1 and c2&#x3D;2能够使用【组合索引(c1,c2)】；<br>查询语句select * from t1 where c1&#x3D;1也能够使用【组合索引(c1,c2)】；<br>查询语句select * from t1 where c2&#x3D;2不能够使用【组合索引(c1,c2)】；<br>因为没有组合索引的引导列，即，要想使用c2列进行查找，必需出现c1等于某值。</p>
+<p>– 4、查看索引是否创建成功</p>
+<p>– 5、使用客户端创建test表（不创建索引）</p>
+<h2 id="9-MySql-事务"><a href="#9-MySql-事务" class="headerlink" title="9.MySql 事务"></a>9.MySql 事务</h2><p><strong>一个事务就是一个完整的业务逻辑，这个业务是最小的逻辑单元，不可再分，要么同时成功，要么同时失败。事务主要用于处理操作量大，复杂度高的数据</strong></p>
+<p><strong>原子性：最小的工作单元，不可再分</strong><br><strong>一致性：同时成功或同时失败</strong><br><strong>隔离性：A事务和B事务之间有隔离</strong><br><strong>持久性：事务提交后，事务执行所产生的数据将会被持久化到数据库表中</strong></p>
+<p>在MySQL中只有使用了Innodb数据库引擎的数据库或表才支持事务。<br>事务处理可以用来维护数据库的完整性，保证成批的SQL语句要么全部执行，要么全部不执行。<br>事务用来管理insert、update、delete语句</p>
+<p> 通过一个简单的例子来学习变量的声明和赋值 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create procedure test2()</span><br><span class="line">begin</span><br><span class="line">  -- 使用 declare语句声明一个变量</span><br><span class="line">  declare inpunt_stu_no varchar(10) default &#x27;&#x27;;</span><br><span class="line">  declare out_stu_name varchar(20) default &#x27;&#x27;;</span><br><span class="line">  -- 使用set语句给变量赋值</span><br><span class="line">  set inpunt_stu_no = &#x27;stu_01&#x27;;</span><br><span class="line">  -- 将users表中id=1的名称赋值给username</span><br><span class="line">  select stu_name into out_stu_name from student where stu_no = inpunt_stu_no;</span><br><span class="line">  -- 返回变量</span><br><span class="line">  select out_stu_name;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>存储过程解析：</p>
+<ol>
+<li>变量的声明使用 declare ，一句 declare 只声明一个变量，变量必须先声明后使用；</li>
+<li>变量具有数据类型和长度，与 mysql 的 SQL 数据类型保持一致；</li>
+<li>变量可以通过 set 来赋值，也可以通过 select into 的方式赋值；</li>
+<li>变量需要返回，可以使用 selec t语句，如：select 变量名</li>
+</ol>
+<p> 调用存储过程 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call test2(); </span><br></pre></td></tr></table></figure>
+
+<p> 条件语句示例（这次考试，年龄小于20岁的学生每科+10分，小于23岁的学生每科-5分，大于23岁的学生+5） </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">create procedure test6(in in_stu_no int)</span><br><span class="line">begin</span><br><span class="line">   declare my_age int default 0;</span><br><span class="line">   select age into my_age from student where stu_no=in_stu_no;</span><br><span class="line">   if(my_age &lt; 20)</span><br><span class="line">   then </span><br><span class="line">       update score set stu_score=stu_score+10 where stu_no=in_stu_no;</span><br><span class="line">    elseif(my_age &lt; 23)</span><br><span class="line">    then </span><br><span class="line">       update score set stu_score=stu_score-5 where stu_no=in_stu_no;</span><br><span class="line">    else </span><br><span class="line">       update score set stu_score=stu_score+10 where stu_no=in_stu_no;</span><br><span class="line">    end if;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>while 语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create procedure test7()</span><br><span class="line">begin</span><br><span class="line">  declare i int default 0;</span><br><span class="line">  while(i&lt;10) do </span><br><span class="line">    begin </span><br><span class="line">        select i;</span><br><span class="line">        set i=i+1;  </span><br><span class="line">        insert into student(stu_no,stu_name) values(concat(&#x27;test_&#x27;,i),&#x27;test&#x27;);</span><br><span class="line">     end;</span><br><span class="line">  end while;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>一个简单的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create function getStuName(stu_id int) returns varchar(32)</span><br><span class="line">    reads sql data  -- 从数据库中读取数据，但不修改数据</span><br><span class="line">    begin</span><br><span class="line">        declare stuName varchar(20) default &#x27;&#x27;;</span><br><span class="line">        select stu_name into stuName from student where id=stu_id;</span><br><span class="line">        return stuName;</span><br><span class="line">    end;</span><br><span class="line">调用函数</span><br><span class="line">select getStuName(10)</span><br></pre></td></tr></table></figure>
+
+<p>函数与存储过程区别</p>
+<p>函数与存储过程最大的区别是函数必须有返回值，否则会报错</p>
+<p>函数特点</p>
+<ol>
+<li>创建函数使用create function 函数名(参数) returns 返回类型；</li>
+<li>函数体放在begin和end之间；</li>
+<li>returns 指定函数的返回值；</li>
+<li>函数调用使用select 函数名称()；</li>
+<li>reads sql data，可读取SQL,但不可修改 SQL 数据</li>
+</ol>
+<h2 id="10-视图"><a href="#10-视图" class="headerlink" title="10.视图"></a>10.视图</h2><h3 id="（1）视图定义"><a href="#（1）视图定义" class="headerlink" title="（1）视图定义"></a><strong>（1）视图定义</strong></h3><ul>
+<li>视图是从一个或多个表中查询出来的数据保存为视图，是一种虚拟存在的表。</li>
+</ul>
+<h3 id="（2）视图作用"><a href="#（2）视图作用" class="headerlink" title="（2）视图作用"></a><strong>（2）视图作用</strong></h3><ol>
+<li>视图的作用：简化SQL查询，提高效率。</li>
+</ol>
+<h3 id="（3）视图的优缺点"><a href="#（3）视图的优缺点" class="headerlink" title="（3）视图的优缺点"></a><strong>（3）视图的优缺点</strong></h3><ul>
+<li>优点：<ol>
+<li>简单性，视图能简化用户的操作</li>
+<li>安全性，视图使用户能以多种角度看待同一数据，能够对机密数据提供安全保护</li>
+<li>逻辑独立性，视图对重构数据库提供了一定程度的逻辑独立性</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>性能相对较差，简单的查询也会因为牵扯多表而复杂</li>
+<li>修改不方便，回因为表间约束而使一些数据视图无法修改</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 创建视图</span><br><span class="line">create view view_student</span><br><span class="line">as</span><br><span class="line">select * from student;</span><br><span class="line"></span><br><span class="line">-- 使用视图</span><br><span class="line">select * from view_student where age &lt;= 21;</span><br><span class="line"></span><br><span class="line">-- 视图的修改</span><br><span class="line">ALTER view view_student as select * from student where sex = &#x27;男&#x27;;</span><br><span class="line"></span><br><span class="line">-- 使用视图</span><br><span class="line">select * from view_student where age &lt;= 21;</span><br><span class="line"></span><br><span class="line">-- 删除视图</span><br><span class="line">drop view view_student;</span><br></pre></td></tr></table></figure>
+
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shou Jian/Freddy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/01/25/mysql/">http://example.com/2022/01/25/mysql/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2022/04/25/mysql%E8%AF%AD%E5%8F%A5/"><i class="fa fa-chevron-left">  </i><span>mysql 操作 2.0</span></a></div><div class="next-post pull-right"><a href="/2022/01/05/Linux%20%E5%9F%BA%E7%A1%80/"><span>Linux 基础</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://s1.vika.cn/space/2022/09/12/e9596066c4794094888ea5e53f712030)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2022 By Shou Jian/Freddy</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="WebAPI"><meta name="keywords" content="js"><meta name="author" content="Shou Jian/Freddy"><meta name="copyright" content="Shou Jian/Freddy"><title>WebAPI | Freddy.io</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '6.3.0'
+} </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Freddy.io" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-APIs-DOM%E3%80%81BOM"><span class="toc-number">1.</span> <span class="toc-text">Web APIs     DOM、BOM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">1.基本认识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E4%BD%9C%E7%94%A8%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.1作用与分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2DOM-Document-Object-Model"><span class="toc-number">2.0.2.</span> <span class="toc-text">1.2DOM(Document Object Model)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-DOM%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">2.DOM的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E8%8E%B7%E5%8F%96DOM%E5%85%83%E7%B4%A0"><span class="toc-number">3.0.1.</span> <span class="toc-text">2.1获取DOM元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E8%AE%BE%E7%BD%AE-x2F-%E4%BF%AE%E6%94%B9DOM%E5%85%83%E7%B4%A0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.2设置&#x2F;修改DOM元素的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E8%AE%BE%E7%BD%AE-x2F-%E4%BF%AE%E6%94%B9DOM%E5%85%83%E7%B4%A0%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">3.0.3.</span> <span class="toc-text">2.3设置&#x2F;修改DOM元素的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1%E4%BF%AE%E6%94%B9%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">3.0.3.0.1.</span> <span class="toc-text">2.3.1修改常用属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.0.3.0.2.</span> <span class="toc-text">2.3.2修改元素的样式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0%E7%9A%84%E7%B1%BB%E5%90%8D"><span class="toc-number">3.0.3.0.3.</span> <span class="toc-text">2.3.3修改元素的类名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0%E5%B1%9E%E6%80%A7"><span class="toc-number">3.0.3.0.4.</span> <span class="toc-text">2.3.4修改表单元素属性</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%9A%E6%97%B6%E5%99%A8-%E5%92%8C-%E5%BB%B6%E6%97%B6%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">3.定时器 和 延时器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">4.0.1.</span> <span class="toc-text">3.1定时器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E5%BB%B6%E6%97%B6%E5%99%A8"><span class="toc-number">4.0.2.</span> <span class="toc-text">3.2延时器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%BA%8B%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">4.事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC"><span class="toc-number">5.0.1.</span> <span class="toc-text">4.1事件监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.0.2.</span> <span class="toc-text">4.2事件类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.0.3.</span> <span class="toc-text">4.3事件对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">5.0.3.0.1.</span> <span class="toc-text">回调函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.0.3.0.2.</span> <span class="toc-text">4.3.1介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-2%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">5.0.3.0.3.</span> <span class="toc-text">4.3.2常用属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-number">5.0.4.</span> <span class="toc-text">4.4事件流</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-1%E4%BA%8B%E4%BB%B6%E6%B5%81%E6%8C%87%E7%9A%84%E6%98%AF%E4%BA%8B%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%B5%81%E5%8A%A8%E8%B7%AF%E5%BE%84%EF%BC%8C%E6%9C%89%E4%B8%A4%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%8C%E5%8C%85%E6%8B%AC%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1"><span class="toc-number">5.0.4.0.1.</span> <span class="toc-text">4.4.1事件流指的是事件完整执行过程中的流动路径，有两个阶段，包括事件捕获和事件冒泡</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1"><span class="toc-number">5.0.4.0.2.</span> <span class="toc-text">4.4.2事件冒泡</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-3%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7"><span class="toc-number">5.0.4.0.3.</span> <span class="toc-text">4.4.3事件捕获</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-4%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-number">5.0.4.0.4.</span> <span class="toc-text">4.4.4阻止事件流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-5%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="toc-number">5.0.4.0.5.</span> <span class="toc-text">4.4.5阻止默认行为</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="toc-number">5.0.5.</span> <span class="toc-text">4.5事件委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6%E6%BB%9A%E5%8A%A8%E4%BA%8B%E4%BB%B6scroll"><span class="toc-number">5.0.6.</span> <span class="toc-text">4.6滚动事件scroll</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-6-1%E7%9B%91%E5%90%AC%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%BB%9A%E5%8A%A8"><span class="toc-number">5.0.6.0.1.</span> <span class="toc-text">4.6.1监听页面的滚动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-6-2scroll"><span class="toc-number">5.0.6.0.2.</span> <span class="toc-text">4.6.2scroll</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-6-3offset"><span class="toc-number">5.0.6.0.3.</span> <span class="toc-text">4.6.3offset</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-6-3client"><span class="toc-number">5.0.6.0.4.</span> <span class="toc-text">4.6.3client</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">5.高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">6.0.1.</span> <span class="toc-text">5.1函数表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">6.0.2.</span> <span class="toc-text">5.2回调函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%8A%82%E7%82%B9"><span class="toc-number">7.</span> <span class="toc-text">6.节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1%E8%8A%82%E7%82%B9%E8%AF%B4%E6%98%8E"><span class="toc-number">7.0.1.</span> <span class="toc-text">6.1节点说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.2.</span> <span class="toc-text">6.2查找节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-1%E6%9F%A5%E6%89%BE%E7%88%B6%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.2.0.1.</span> <span class="toc-text">6.2.1查找父元素节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-2%E6%9F%A5%E6%89%BE%E5%AD%90%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.2.0.2.</span> <span class="toc-text">6.2.2查找子元素节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-3%E6%9F%A5%E6%89%BE%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.2.0.3.</span> <span class="toc-text">6.2.3查找兄弟节点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3%E5%A2%9E%E5%8A%A0%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E5%85%8B%E9%9A%86%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.3.</span> <span class="toc-text">6.3增加、删除、克隆节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-1%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.3.0.1.</span> <span class="toc-text">6.3.1创建节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-2%E8%BF%BD%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.3.0.2.</span> <span class="toc-text">6.3.2追加节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-3%E5%85%8B%E9%9A%86%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.3.0.3.</span> <span class="toc-text">6.3.3克隆节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-4%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-number">7.0.3.0.4.</span> <span class="toc-text">6.3.4删除节点</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%97%B6%E9%97%B4%E5%AF%B9%E8%B1%A1"><span class="toc-number">8.</span> <span class="toc-text">7.时间对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%97%B6%E9%97%B4%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="toc-number">8.0.1.</span> <span class="toc-text">1.时间对象方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%97%B6%E9%97%B4%E6%88%B3"><span class="toc-number">8.0.2.</span> <span class="toc-text">2.时间戳</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-BOM%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">9.</span> <span class="toc-text">8.BOM的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1BOM%E4%BB%8B%E7%BB%8D"><span class="toc-number">9.0.1.</span> <span class="toc-text">8.1BOM介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-1location%E5%AF%B9%E8%B1%A1"><span class="toc-number">9.0.1.0.1.</span> <span class="toc-text">8.1.1location对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-2navigator%E5%AF%B9%E8%B1%A1"><span class="toc-number">9.0.1.0.2.</span> <span class="toc-text">8.1.2navigator对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-3history%E5%AF%B9%E8%B1%A1"><span class="toc-number">9.0.1.0.3.</span> <span class="toc-text">8.1.3history对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"><span class="toc-number">9.0.2.</span> <span class="toc-text">8.2本地存储</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-1%E4%BB%8B%E7%BB%8D"><span class="toc-number">9.0.2.0.1.</span> <span class="toc-text">8.2.1介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-2-localStorage"><span class="toc-number">9.0.2.0.2.</span> <span class="toc-text">8.2.2 localStorage</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-3-sessionStorage"><span class="toc-number">9.0.2.0.3.</span> <span class="toc-text">8.2.3 sessionStorage</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="toc-number">10.</span> <span class="toc-text">9.自定义属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1%E4%BB%8B%E7%BB%8D"><span class="toc-number">10.0.1.</span> <span class="toc-text">9.1介绍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">11.</span> <span class="toc-text">10.正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1%E4%BB%8B%E7%BB%8D"><span class="toc-number">11.0.1.</span> <span class="toc-text">10.1介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2%E8%AF%AD%E6%B3%95"><span class="toc-number">11.0.2.</span> <span class="toc-text">10.2语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-number">11.0.3.</span> <span class="toc-text">10.3元字符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-1%E8%BE%B9%E7%95%8C%E7%AC%A6"><span class="toc-number">11.0.3.0.1.</span> <span class="toc-text">10.3.1边界符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-2%E9%87%8F%E8%AF%8D"><span class="toc-number">11.0.3.0.2.</span> <span class="toc-text">10.3.2量词</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-3%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-number">11.0.3.0.3.</span> <span class="toc-text">10.3.3字符类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">11.0.4.</span> <span class="toc-text">10.4修饰符</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.vika.cn/space/2022/09/12/668a343b2d584517a39787dba68f8fbd"></div><div class="author-info__name text-center">Shou Jian/Freddy</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">11</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">7</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.vika.cn/space/2022/09/12/e9596066c4794094888ea5e53f712030)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Freddy.io</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">WebAPI</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-01-03</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="Web-APIs-DOM、BOM"><a href="#Web-APIs-DOM、BOM" class="headerlink" title="Web APIs     DOM、BOM"></a>Web APIs     DOM、BOM</h1><h1 id="1-基本认识"><a href="#1-基本认识" class="headerlink" title="1.基本认识"></a>1.基本认识</h1><h3 id="1-1作用与分类"><a href="#1-1作用与分类" class="headerlink" title="1.1作用与分类"></a>1.1作用与分类</h3><p><strong>作用</strong>：   简而言之就是使用JavaScript去操作html和浏览器</p>
+<p><strong>分类</strong>：   DOM（文档对象模型）BOM（浏览器对象模型）</p>
+<p>​         <img src="../pictures/WebAPIs分类.png"  /></p>
+<h3 id="1-2DOM-Document-Object-Model"><a href="#1-2DOM-Document-Object-Model" class="headerlink" title="1.2DOM(Document Object Model)"></a>1.2DOM(Document Object Model)</h3><p>​	文档对象模型，用于呈现以及HTML和XML文档交互的API</p>
+<p>​	<strong>DOM树</strong>  将HTML文档以树状结构表现出来，称之为DOM树，直观的体现了标签和标签的关系</p>
+ <img src="../pictures/DOM树.png"  />
+
+<p>​	<strong>DOM的核心是把内容当作对象类处理</strong></p>
+<h1 id="2-DOM的基本操作"><a href="#2-DOM的基本操作" class="headerlink" title="2.DOM的基本操作"></a>2.DOM的基本操作</h1><h3 id="2-1获取DOM元素"><a href="#2-1获取DOM元素" class="headerlink" title="2.1获取DOM元素"></a>2.1获取DOM元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取匹配的第一个元素    </span></span><br><span class="line"><span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;css选择器&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​	返回值：</p>
+<p>​		CSS选择器匹配的第一个元素,一个 HTMLElement对象，如果没有匹配到，则返回null</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取匹配的所有元素    </span></span><br><span class="line"><span class="keyword">let</span> lis = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;ul li&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​	返回值：</p>
+<p>​		CSS选择器匹配的所有元素,返回的是伪数组(有长度索引号，但是不能使用数组方法)，只能通过遍历的方式获取里面的每一个DOM元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据ID获取一个元素  </span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;nav&#x27;</span>)</span><br><span class="line"><span class="comment">//根据标签获取一类元素  获取页面的所有div</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementByTagName</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="comment">//根据类名获取元素    获取页面所有类名为aoteman的</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementByClassName</span>(<span class="string">&#x27;aoteman&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>     小括号里必须加**引号’’**，然后里面写css选择器</p>
+<h3 id="2-2设置-x2F-修改DOM元素的内容"><a href="#2-2设置-x2F-修改DOM元素的内容" class="headerlink" title="2.2设置&#x2F;修改DOM元素的内容"></a>2.2设置&#x2F;修改DOM元素的内容</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="comment">//对象.属性 = 值</span></span><br><span class="line"><span class="comment">//innerText   添加文本内容</span></span><br><span class="line">box.<span class="property">innerText</span> = <span class="string">&#x27; &#x27;</span></span><br><span class="line"><span class="comment">//innerHTML</span></span><br><span class="line">box.<span class="property">innerHTML</span> = <span class="string">&#x27; &#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>	inner<strong>Text 不会解析</strong>标签</p>
+<p>​			inner<strong>HTML会解析</strong>里面的标签</p>
+<h3 id="2-3设置-x2F-修改DOM元素的属性"><a href="#2-3设置-x2F-修改DOM元素的属性" class="headerlink" title="2.3设置&#x2F;修改DOM元素的属性"></a>2.3设置&#x2F;修改DOM元素的属性</h3><h5 id="2-3-1修改常用属性"><a href="#2-3-1修改常用属性" class="headerlink" title="2.3.1修改常用属性"></a>2.3.1修改常用属性</h5><p><strong>对象.属性</strong> &#x3D; 值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pic = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line"><span class="comment">//对象.属性 = 值</span></span><br><span class="line">pic.<span class="property">src</span> = <span class="string">&#x27;./images/img1.png&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-2修改元素的样式"><a href="#2-3-2修改元素的样式" class="headerlink" title="2.3.2修改元素的样式"></a>2.3.2修改元素的样式</h5><p>对象**.style.样式属性** &#x3D; 值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="comment">//对象.style.样式属性 = 值</span></span><br><span class="line">box.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&#x27;pink&#x27;</span></span><br><span class="line">box.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;400px&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果属性有-连接符，需要转换为小驼峰命名法；大部分数字后面都需要加单位</p>
+<h5 id="2-3-3修改元素的类名"><a href="#2-3-3修改元素的类名" class="headerlink" title="2.3.3修改元素的类名"></a>2.3.3修改元素的类名</h5><p>box**.className** &#x3D; ‘one active’</p>
+<p>box.classList**.remove**(‘类名’)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="comment">//1. 修改box的类名   这种方式会覆盖原有的类名，想要不覆盖添加两个类名</span></span><br><span class="line">box.<span class="property">className</span> = <span class="string">&#x27;one active&#x27;</span></span><br><span class="line"><span class="comment">//2. 追加类名</span></span><br><span class="line">box.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;类名&#x27;</span>)</span><br><span class="line"><span class="comment">//3. 删除类名</span></span><br><span class="line">box.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&#x27;类名&#x27;</span>)</span><br><span class="line"><span class="comment">//4. 切换类名</span></span><br><span class="line">box.<span class="property">classList</span>.<span class="title function_">toggle</span>(<span class="string">&#x27;类名&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-4修改表单元素属性"><a href="#2-3-4修改表单元素属性" class="headerlink" title="2.3.4修改表单元素属性"></a>2.3.4修改表单元素属性</h5><p>取值:对象.属性名    赋值：对象.属性名 &#x3D; ‘新值’</p>
+<p> disabled、checked、selected</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> checkbox = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.checkbox&#x27;</span>)</span><br><span class="line"><span class="comment">//1.   取值:对象.属性名    赋值：对象.属性名 = &#x27;新值&#x27;</span></span><br><span class="line">input.<span class="property">value</span> = <span class="string">&#x27;aoteman&#x27;</span></span><br><span class="line">input.<span class="property">type</span> = <span class="string">&#x27;password&#x27;</span></span><br><span class="line"><span class="comment">//2.   修改表单元素属性</span></span><br><span class="line">btn.<span class="property">disabled</span> = <span class="literal">false</span><span class="comment">//禁用按钮</span></span><br><span class="line">checkbox.<span class="property">checked</span> = <span class="literal">false</span><span class="comment">//复选框</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-定时器-和-延时器"><a href="#3-定时器-和-延时器" class="headerlink" title="3.定时器 和 延时器"></a>3.定时器 和 延时器</h1><h3 id="3-1定时器"><a href="#3-1定时器" class="headerlink" title="3.1定时器"></a>3.1定时器</h3><p><strong>作用</strong>  每隔一段时间调用一次函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*语法</span></span><br><span class="line"><span class="comment">let 变量名 = setInterval(函数，间隔时间ms)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//开启定时器    </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">repeat</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(repeat, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//清除定时器  clearInterval(变量名)</span></span><br><span class="line"><span class="built_in">clearInterval</span>(timer)</span><br></pre></td></tr></table></figure>
+<p><strong>函数每隔一段时间重复执行</strong></p>
+<h3 id="3-2延时器"><a href="#3-2延时器" class="headerlink" title="3.2延时器"></a>3.2延时器</h3><p><strong>作用</strong>  让代码延迟执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*语法</span></span><br><span class="line"><span class="comment">let 变量名 = setTimeout(函数，间隔时间ms)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//开启定时器 </span></span><br><span class="line"><span class="keyword">let</span> timer = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>( )</span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line"><span class="comment">//清除延时器  clearTimeout(变量名)</span></span><br><span class="line"><span class="built_in">clearTimeout</span>(timer)</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数只执行一次</strong></p>
+<h1 id="4-事件"><a href="#4-事件" class="headerlink" title="4.事件"></a>4.事件</h1><h3 id="4-1事件监听"><a href="#4-1事件监听" class="headerlink" title="4.1事件监听"></a>4.1事件监听</h3><p>​	让程序检测是否有事件产生，一旦有事件触发，就立即调用一个函数做出响应，也称为 <strong>注册事件</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*语法</span></span><br><span class="line"><span class="comment">元素.addEventListener(&#x27;事件&#x27;，要执行的函数)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span><br><span class="line"></span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>事件监听三要素</strong></p>
+<p>​	1.事件源：哪个元素被触发了</p>
+<p>​	2.事件：用什么方式触发，比如说click或者mouseenter mouseleave</p>
+<p>​	3.事件调用的函数：事件触发之后要做什么事情</p>
+<h3 id="4-2事件类型"><a href="#4-2事件类型" class="headerlink" title="4.2事件类型"></a>4.2事件类型</h3><p>​	<strong>鼠标事件：</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>click</td>
+<td>鼠标点击</td>
+</tr>
+<tr>
+<td>mouseenter</td>
+<td>鼠标经过</td>
+</tr>
+<tr>
+<td>mouseleave</td>
+<td>鼠标离开</td>
+</tr>
+</tbody></table>
+<p><strong>焦点事件：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">时间名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">focus</td>
+<td align="center">获得焦点</td>
+</tr>
+<tr>
+<td align="center">blur</td>
+<td align="center">失去焦点</td>
+</tr>
+</tbody></table>
+<p><strong>键盘事件：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">时间名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">keydown</td>
+<td align="center">键盘按下触发</td>
+</tr>
+<tr>
+<td align="center">keyup</td>
+<td align="center">键盘抬起触发</td>
+</tr>
+</tbody></table>
+<p><strong>文本事件：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">时间名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">input</td>
+<td align="center">用户输入触发</td>
+</tr>
+</tbody></table>
+<p><strong>resize</strong> :</p>
+<p>窗口发生变化触发的事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;resize&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">//检测屏幕宽度</span></span><br><span class="line">    <span class="keyword">let</span> w = <span class="variable language_">document</span>.<span class="property">ducumentElement</span>.<span class="property">clientWidth</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(w)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-3事件对象"><a href="#4-3事件对象" class="headerlink" title="4.3事件对象"></a>4.3事件对象</h3><h5 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h5><p>普通函数的声明与调用无顺序限制，先声明再调用。</p>
+<p>高阶函数可以被简单理解为函数的高级应用，JavaScript 中函数可以被当成【值】来对待，基于这个特性实现函数的高 级应用。 </p>
+<p>如果将函数 A 做为参数传递给函数 B 时，我们称函数 A 为回调函数 简单理解： 当一个函数当做参数来传递给另外一个函数的时候，这个函数就是回调函数。</p>
+<h5 id="4-3-1介绍"><a href="#4-3-1介绍" class="headerlink" title="4.3.1介绍"></a>4.3.1介绍</h5><p>​	事件对象也是个对象，这个对象里保存了触发事件时的相关信息</p>
+<p>​	在事件绑定的回调函数的第一个参数就是事件对象，一般命名为<strong>e</strong>或<strong>event</strong>或<strong>ev</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>.<span class="keyword">function</span>(<span class="params">e</span>)&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-3-2常用属性"><a href="#4-3-2常用属性" class="headerlink" title="4.3.2常用属性"></a>4.3.2常用属性</h5><table>
+<thead>
+<tr>
+<th align="center">属性名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">type</td>
+<td align="center">获取当前的事件类型</td>
+</tr>
+<tr>
+<td align="center">clientX&#x2F;clientY</td>
+<td align="center">获取光标相对于浏览器可见窗口左上角的位置</td>
+</tr>
+<tr>
+<td align="center">offsetX&#x2F;offsetY</td>
+<td align="center">获取光标相对于当前DOM元素左上角的位置</td>
+</tr>
+<tr>
+<td align="center">key</td>
+<td align="center">用户按下的键盘键的值</td>
+</tr>
+<tr>
+<td align="center">pageX&#x2F;pageY</td>
+<td align="center">获取光标相对于文档左上角的位置</td>
+</tr>
+</tbody></table>
+<h3 id="4-4事件流"><a href="#4-4事件流" class="headerlink" title="4.4事件流"></a>4.4事件流</h3><h5 id="4-4-1事件流指的是事件完整执行过程中的流动路径，有两个阶段，包括事件捕获和事件冒泡"><a href="#4-4-1事件流指的是事件完整执行过程中的流动路径，有两个阶段，包括事件捕获和事件冒泡" class="headerlink" title="4.4.1事件流指的是事件完整执行过程中的流动路径，有两个阶段，包括事件捕获和事件冒泡"></a>4.4.1事件流指的是事件完整执行过程中的流动路径，有两个阶段，包括<strong>事件捕获</strong>和<strong>事件冒泡</strong></h5><p><img src="/../pictures/%E4%BA%8B%E4%BB%B6%E6%B5%81.png" alt="事件流"></p>
+<h5 id="4-4-2事件冒泡"><a href="#4-4-2事件冒泡" class="headerlink" title="4.4.2事件冒泡"></a>4.4.2事件冒泡</h5><p>​	当一个元素触发事件后，会依次向上调用所有父级元素的同名事件+</p>
+<h5 id="4-4-3事件捕获"><a href="#4-4-3事件捕获" class="headerlink" title="4.4.3事件捕获"></a>4.4.3事件捕获</h5><p>​	从DOM的根元素开始去执行对应的事件 (从外到里) </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">DOM</span>.<span class="title function_">addEventListener</span>(事件类型，函数，是否使用捕获机制)</span><br></pre></td></tr></table></figure>
+
+<p>addEventListener第三个参数传入true代表是捕获阶段触发，若传入false代表冒泡阶段触发，<strong>默认就是false</strong></p>
+<h5 id="4-4-4阻止事件流"><a href="#4-4-4阻止事件流" class="headerlink" title="4.4.4阻止事件流"></a>4.4.4阻止事件流</h5><p>因为默认就有冒泡模式的存在，所以容易导致事件影响到父级元素，想把事件就限制在当前元素内，就需要阻止事件流动。在冒泡和捕获阶段都有效</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.<span class="title function_">stoppropagation</span>()</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-4-5阻止默认行为"><a href="#4-4-5阻止默认行为" class="headerlink" title="4.4.5阻止默认行为"></a>4.4.5阻止默认行为</h5><p>​	阻止默认行为，比如链接点击不跳转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.<span class="title function_">preventDefult</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5事件委托"><a href="#4-5事件委托" class="headerlink" title="4.5事件委托"></a>4.5事件委托</h3><p>​	1.事件委托是利用事件冒泡，通过给父元素添加事件，让子元素实现对应的效果，这样就不用给子元素一个一个添加事件。<br>​	2.利用   e.target获得触发事件的元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>)</span><br><span class="line">ul.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    e.<span class="property">target</span>.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6滚动事件scroll"><a href="#4-6滚动事件scroll" class="headerlink" title="4.6滚动事件scroll"></a>4.6滚动事件scroll</h3><h5 id="4-6-1监听页面的滚动"><a href="#4-6-1监听页面的滚动" class="headerlink" title="4.6.1监听页面的滚动"></a>4.6.1监听页面的滚动</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>需要监听某个元素内部的滚动，给元素添加滚动事件即可。</p>
+<h5 id="4-6-2scroll"><a href="#4-6-2scroll" class="headerlink" title="4.6.2scroll"></a>4.6.2scroll</h5><p><strong>获取宽高    scrollWidth  scrollHeight</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(div.<span class="property">scrollWidth</span>)   <span class="comment">//返回的是不带单位的</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(div.<span class="property">scrollHeight</span>)  </span><br></pre></td></tr></table></figure>
+
+<p>scroll返回的是<strong>元素内容</strong>的宽高（不含滚动条），返回值不带单位。</p>
+<p><strong>获取位置    scrollLeft  scrollTop</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">scrollTop</span>)</span><br><span class="line">    <span class="comment">//document.documentElement HTML 文档返回对象为HTML元素</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​	scroll获取元素内容往左往上滚出去看不到的距离<br>​    这两个属性是可以修改的</p>
+<h5 id="4-6-3offset"><a href="#4-6-3offset" class="headerlink" title="4.6.3offset"></a>4.6.3offset</h5><p><strong>获取宽高    offsetWidth  offsetHeight</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(div.<span class="property">offsetWidth</span>)   <span class="comment">//返回的是不带单位的</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(div.<span class="property">offsetHeight</span>)  </span><br></pre></td></tr></table></figure>
+
+<p>​	获取<strong>元素自身</strong>的宽高、包含盒子自身的宽高、padding、border</p>
+<p><strong>获取位置    scrollLeft  scrollTop</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sk = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.sk&#x27;</span>)       </span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(sk.<span class="property">offsetTop</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​	offsetLeft offsetTop获取元素<strong>距离自己定位父级元素</strong>的左、上距离</p>
+<p>​	只读属性不可被修改</p>
+<h5 id="4-6-3client"><a href="#4-6-3client" class="headerlink" title="4.6.3client"></a>4.6.3client</h5><p><strong>获取宽高    clientWidth  clientHeight</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(div.<span class="property">clientWidth</span>)   <span class="comment">//返回的是不带单位的</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(div.<span class="property">clientHeight</span>)  </span><br></pre></td></tr></table></figure>
+
+<p>​	获取<strong>元素可见部分</strong>的宽高，不包含边框滚动条，包含padding</p>
+<p><strong>获取位置    clientLeft  clientTop</strong></p>
+<p>​	clientLeft clientTop获取左边框和上边框的宽度</p>
+<p>​	只读属性不可被修改</p>
+<ol>
+<li>offset家族  获取元素自身大小：包括自身设置的宽高、padding、border   获取元素距离定位父级的左和上距离 只读属性</li>
+<li>client家族 获取元素可见区域的大小 获取元素左、上边框距离 只读属性</li>
+<li>scroll家族  获取元素内容的总大小  获取元素向左向上滚出去看不见的距离 可读写属性</li>
+</ol>
+<h1 id="5-高阶函数"><a href="#5-高阶函数" class="headerlink" title="5.高阶函数"></a>5.高阶函数</h1><p><strong>高阶函数</strong>  javaScript 中函数可以被当成【值】来对待，基于这个特性实现函数的高级应用</p>
+<h3 id="5-1函数表达式"><a href="#5-1函数表达式" class="headerlink" title="5.1函数表达式"></a>5.1函数表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数表达式必须先声明再调用</span></span><br><span class="line"><span class="keyword">let</span> counter = <span class="keyword">function</span>(<span class="params">x,y</span>)&#123;<span class="keyword">return</span> x+y&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">let</span> result = <span class="title function_">counter</span>(<span class="number">5</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2回调函数"><a href="#5-2回调函数" class="headerlink" title="5.2回调函数"></a>5.2回调函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数表达式必须先声明再调用</span></span><br><span class="line"><span class="keyword">let</span> counter = <span class="keyword">function</span>(<span class="params">x,y</span>)&#123;<span class="keyword">return</span> x+y&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">let</span> result = <span class="title function_">counter</span>(<span class="number">5</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="6-节点"><a href="#6-节点" class="headerlink" title="6.节点"></a>6.节点</h1><h3 id="6-1节点说明"><a href="#6-1节点说明" class="headerlink" title="6.1节点说明"></a>6.1节点说明</h3><p>​	<strong>DOM节点：</strong>DOM树里的每一个内容成为节点</p>
+<p>​	<strong>类型</strong>：</p>
+<p>​		1.元素节点：所有的标签      如body   div</p>
+<p>​		2.属性节点</p>
+<p>​		3.文本节点</p>
+<p>​		4.其他</p>
+<h3 id="6-2查找节点"><a href="#6-2查找节点" class="headerlink" title="6.2查找节点"></a>6.2查找节点</h3><h5 id="6-2-1查找父元素节点"><a href="#6-2-1查找父元素节点" class="headerlink" title="6.2.1查找父元素节点"></a>6.2.1查找父元素节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法  ：子元素.parentNode</span></span><br><span class="line"><span class="keyword">let</span> son = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.son&#x27;</span>)</span><br><span class="line">son.<span class="property">parentNode</span>.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;none&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>​	返回最近一级的父元素节点，如果找不到返回为null</p>
+<h5 id="6-2-2查找子元素节点"><a href="#6-2-2查找子元素节点" class="headerlink" title="6.2.2查找子元素节点"></a>6.2.2查找子元素节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法  ：父元素.children       仅获得元素节点**常用**</span></span><br><span class="line"><span class="comment">//       父元素.childNodes     获得所有子节点、包括文本节点（空格、换行）、注释节点等</span></span><br><span class="line">ul.<span class="property">children</span>[i].<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>​	返回的是一个<strong>伪数组</strong></p>
+<h5 id="6-2-3查找兄弟节点"><a href="#6-2-3查找兄弟节点" class="headerlink" title="6.2.3查找兄弟节点"></a>6.2.3查找兄弟节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法  ： 元素.nextElementSibling       下一个兄弟节点</span></span><br><span class="line"><span class="comment">//		  元素.previousElementSibling   上一个兄弟节点</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3增加、删除、克隆节点"><a href="#6-3增加、删除、克隆节点" class="headerlink" title="6.3增加、删除、克隆节点"></a>6.3增加、删除、克隆节点</h3><h5 id="6-3-1创建节点"><a href="#6-3-1创建节点" class="headerlink" title="6.3.1创建节点"></a>6.3.1创建节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法   document.creatElement(&#x27;标签名&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">div.<span class="property">className</span> = <span class="string">&#x27;current&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="6-3-2追加节点"><a href="#6-3-2追加节点" class="headerlink" title="6.3.2追加节点"></a>6.3.2追加节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法   父元素.appendChild(要插入的子元素)		加到父元素的最后</span></span><br><span class="line"><span class="comment">//		父元素.insertBefore(要插入的子元素，在哪个元素前)		加到父元素的某个子元素前面</span></span><br><span class="line"><span class="keyword">let</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> li = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;li&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ul.<span class="title function_">appendChild</span>(li)</span><br><span class="line">ul.<span class="title function_">insertBefore</span>(li, ul.<span class="property">children</span>[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<h5 id="6-3-3克隆节点"><a href="#6-3-3克隆节点" class="headerlink" title="6.3.3克隆节点"></a>6.3.3克隆节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法	元素.cloneNode(布尔值)</span></span><br><span class="line"><span class="comment">//若布尔值为false(默认值)，不克隆后代节点；true克隆后代节点</span></span><br><span class="line"><span class="keyword">let</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>)</span><br><span class="line"><span class="comment">//一般先克隆节点，然后把复制的节点放到指定元素的内部</span></span><br><span class="line"><span class="keyword">let</span> newUl = ul.<span class="title function_">cloneNode</span>(<span class="literal">true</span>)</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(newUl)</span><br></pre></td></tr></table></figure>
+
+<h5 id="6-3-4删除节点"><a href="#6-3-4删除节点" class="headerlink" title="6.3.4删除节点"></a>6.3.4删除节点</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法	父元素.removeChild(要删除的元素)</span></span><br><span class="line">ul.<span class="title function_">removeChild</span>(ul.<span class="property">children</span>[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p>​	在 JavaScript 原生DOM操作中，要删除元素必须通过父元素删除</p>
+<p>​	删除节点和隐藏节点（display:none） 有区别的： 隐藏节点还是存在的，但是删除，则从html中删除节点</p>
+<h1 id="7-时间对象"><a href="#7-时间对象" class="headerlink" title="7.时间对象"></a>7.时间对象</h1><h3 id="1-时间对象方法"><a href="#1-时间对象方法" class="headerlink" title="1.时间对象方法"></a>1.时间对象方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获得当前时间</span></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="comment">//获得指定时间</span></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;1949-10-01&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getFullYear()</td>
+<td>获得年份</td>
+<td>获取四位年份</td>
+</tr>
+<tr>
+<td>getMonth()</td>
+<td>获得月份</td>
+<td>取值为 0 ~ 11</td>
+</tr>
+<tr>
+<td>getDate()</td>
+<td>获取月份中的每一天</td>
+<td>不同月份取值也不相同</td>
+</tr>
+<tr>
+<td>getDay()</td>
+<td>获取星期</td>
+<td>取值为 0 ~ 6</td>
+</tr>
+<tr>
+<td>getHours()</td>
+<td>获取小时</td>
+<td>取值为 0 ~ 23</td>
+</tr>
+<tr>
+<td>getMinutes()</td>
+<td>获取分钟</td>
+<td>取值为 0 ~ 59</td>
+</tr>
+<tr>
+<td>getSeconds()</td>
+<td>获取秒</td>
+<td>取值为 0 ~ 59</td>
+</tr>
+</tbody></table>
+<h3 id="2-时间戳"><a href="#2-时间戳" class="headerlink" title="2.时间戳"></a>2.时间戳</h3><p>​	指的是1970年01月01日00时00分00秒起至现在的毫秒数，通常用<strong>两个</strong>时间戳计算<strong>时间差</strong></p>
+<p>方法1：getTime()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//getTime</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.首先实例化</span></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="comment">//2.获得时间戳</span></span><br><span class="line">date.<span class="title function_">getTime</span>()</span><br></pre></td></tr></table></figure>
+
+<p>方法2：+new Date</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="keyword">new</span> <span class="title class_">Date</span>())  <span class="comment">//获得当前的时间戳</span></span><br><span class="line">consele.<span class="title function_">log</span>(+<span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2022-1-1 12:00:00&#x27;</span>))  <span class="comment">//获得指定时间的时间戳</span></span><br></pre></td></tr></table></figure>
+
+<p>方法3: Date().now()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>())  <span class="comment">//只能得到当前时间的时间戳</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong> 方法1和方法2可以返回指定时间的时间戳，方法三只能得到当前时间的时间戳</p>
+<p>​			方法1在使用getTime之前需要实例化</p>
+<h1 id="8-BOM的基本操作"><a href="#8-BOM的基本操作" class="headerlink" title="8.BOM的基本操作"></a>8.BOM的基本操作</h1><h3 id="8-1BOM介绍"><a href="#8-1BOM介绍" class="headerlink" title="8.1BOM介绍"></a>8.1BOM介绍</h3><p>​	BOM(Browser Object Model ) 是浏览器对象模型</p>
+<p><img src="/../pictures/BOM.png" alt="BOM"></p>
+<ul>
+<li>window 是浏览器内置中的全局对象， Web APIs 的知识内容都是基于 window 对象实现的</li>
+<li>window 对象下包含了 navigator、location、document、history、screen 5个属性，即所谓的 BOM （浏览器对象模型） </li>
+<li>document 是实现 DOM 的基础，它其实是依附于 window 的属性。</li>
+<li><strong>依附于 window 对象的所有属性和方法，使用时可以省略 window</strong></li>
+</ul>
+<h5 id="8-1-1location对象"><a href="#8-1-1location对象" class="headerlink" title="8.1.1location对象"></a>8.1.1location对象</h5><p>​	location 的数据类型是对象，它拆分并保存了 URL 地址的各个组成部分</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">href</td>
+<td align="center">获取完整的 URL 地址，对其赋值时用于地址的跳转</td>
+</tr>
+<tr>
+<td align="center">search</td>
+<td align="center">获取地址中携带的参数，符号 ？后面部分</td>
+</tr>
+<tr>
+<td align="center">hash</td>
+<td align="center">获取地址中的哈希值，符号 # 后面部分</td>
+</tr>
+<tr>
+<td align="center">reload()</td>
+<td align="center">法用来刷新当前页面，传入参数 true 时表示强制刷新</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.<span class="property">href</span> = <span class="string">&#x27;www.baidu.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="8-1-2navigator对象"><a href="#8-1-2navigator对象" class="headerlink" title="8.1.2navigator对象"></a>8.1.2navigator对象</h5><p>​	navigator的数据类型是对象，该对象下记录了浏览器自身的相关信息</p>
+<p>可以通过userAgent属性来检测浏览器的版本或者平台</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> userAgent = navigator.<span class="property">userAgent</span></span><br><span class="line">    <span class="comment">//验证是否为android或者iphone</span></span><br><span class="line">    <span class="keyword">const</span> android = userAgent.<span class="title function_">match</span>(<span class="regexp">/(Android);?[\s\/]+([\d.]+)?/</span>)</span><br><span class="line">	<span class="keyword">const</span> iphone = userAgent.<span class="title function_">match</span>(<span class="regexp">/(iPhone\sOS)\s([\d_]+)/</span>)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<h5 id="8-1-3history对象"><a href="#8-1-3history对象" class="headerlink" title="8.1.3history对象"></a>8.1.3history对象</h5><p>​	history 的数据类型是对象，该对象与浏览器地址栏的操作相对应，如前进、后退、历史记录等</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法或属性</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">back()</td>
+<td align="center">后退一页</td>
+</tr>
+<tr>
+<td align="center">forward()</td>
+<td align="center">前进一页</td>
+</tr>
+<tr>
+<td align="center">go(参数）</td>
+<td align="center">前进或后退，参数为1前进一个页面，-1后退一个页面</td>
+</tr>
+</tbody></table>
+<h3 id="8-2本地存储"><a href="#8-2本地存储" class="headerlink" title="8.2本地存储"></a>8.2本地存储</h3><h5 id="8-2-1介绍"><a href="#8-2-1介绍" class="headerlink" title="8.2.1介绍"></a>8.2.1介绍</h5><p>​	网页经常需要在本地存储大量的数据，HTML5提出了规范的相关解决方案</p>
+<ul>
+<li>数据存储在用户的浏览器中</li>
+<li>设置和读取方便，刷新页面不丢失数据</li>
+<li>容量大，sessionStorage和localStorage大约5M左右</li>
+</ul>
+<h5 id="8-2-2-localStorage"><a href="#8-2-2-localStorage" class="headerlink" title="8.2.2 localStorage"></a>8.2.2 localStorage</h5><ul>
+<li>生命周期永久生效，除非手动删除，否则关闭页面也会存在</li>
+<li>可以多页面共享（同一浏览器可以共享）</li>
+<li>以键值对的方法存储使用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储数据</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(key,value)</span><br><span class="line"><span class="comment">//获取数据</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(key)</span><br><span class="line"><span class="comment">//删除数据</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(key)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>   本地存储只能存储字符串，无法存储复杂数据类型，需要将复杂数据类型转换成JSON字符串再存储</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将复杂数据转换成JSON字符串   存储时使用</span></span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(复杂数据类型)</span><br><span class="line"><span class="comment">//将JSON字符串转换成对象      取出时使用</span></span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>字符串)</span><br></pre></td></tr></table></figure>
+
+<h5 id="8-2-3-sessionStorage"><a href="#8-2-3-sessionStorage" class="headerlink" title="8.2.3 sessionStorage"></a>8.2.3 sessionStorage</h5><ul>
+<li>生命周期生命周期为关闭浏览器窗口</li>
+<li>在同一个窗口(页面)下数据可以共享</li>
+<li>以键值对的方法存储使用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用方法同上</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="9-自定义属性"><a href="#9-自定义属性" class="headerlink" title="9.自定义属性"></a>9.自定义属性</h1><h3 id="9-1介绍"><a href="#9-1介绍" class="headerlink" title="9.1介绍"></a>9.1介绍</h3><p>​	<strong>固有属性:</strong>  标签天生自带的属性 比如class id title等, 可以直接使用点语法操作</p>
+<p>​	<strong>自定义属性:</strong>  由程序员自己添加的属性,在DOM对象中找不到, 无法使用点语法操作,必须使用专门的API </p>
+<pre><code>在html5中推出来了专门的data-自定义属性 在 标签上一律以data-开头,
+在DOM对象上一律以dataset对象方式获取
+</code></pre>
+<h1 id="10-正则表达式"><a href="#10-正则表达式" class="headerlink" title="10.正则表达式"></a>10.正则表达式</h1><h3 id="10-1介绍"><a href="#10-1介绍" class="headerlink" title="10.1介绍"></a>10.1介绍</h3><p>​	正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式。正则表达式也是对象</p>
+<p>​	作用：表单验证（匹配），过滤敏感词（替换），提取字符串中想要的部分（提取）</p>
+<h3 id="10-2语法"><a href="#10-2语法" class="headerlink" title="10.2语法"></a>10.2语法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.定义正则表达式   let 变量名 = /表达式/</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/huahua/</span></span><br><span class="line"><span class="comment">//2.用test()方法检测正则表达式与指定字符串是否匹配，返回布尔值  </span></span><br><span class="line"><span class="keyword">let</span> str = <span class="regexp">/huahuahahahakahfa/</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg.<span class="title function_">test</span>(str))</span><br><span class="line"><span class="comment">//3.用exec()方法再之歌指定字符串中执行一个搜索匹配，返回一个数组</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg.<span class="title function_">exec</span>(str))</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3元字符"><a href="#10-3元字符" class="headerlink" title="10.3元字符"></a>10.3元字符</h3><h5 id="10-3-1边界符"><a href="#10-3-1边界符" class="headerlink" title="10.3.1边界符"></a>10.3.1边界符</h5><p>​	表示位置，开头和结尾，必须用什么开头，用什么结尾</p>
+<table>
+<thead>
+<tr>
+<th>边界符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>表示匹配行首的文本</td>
+</tr>
+<tr>
+<td>$</td>
+<td>表示匹配行尾的文本</td>
+</tr>
+<tr>
+<td>^$</td>
+<td>两个一起用表示精准匹配</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/^哈/</span>.<span class="title function_">test</span>(<span class="string">&#x27;哈&#x27;</span>))  <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/^哈/</span>.<span class="title function_">test</span>(<span class="string">&#x27;我哈哈大笑&#x27;</span>))  <span class="comment">// false </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/^哈$/</span>.<span class="title function_">test</span>(<span class="string">&#x27;哈哈&#x27;</span>))  <span class="comment">// false </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/^哈$/</span>.<span class="title function_">test</span>(<span class="string">&#x27;哈&#x27;</span>))  <span class="comment">// true </span></span><br></pre></td></tr></table></figure>
+
+<h5 id="10-3-2量词"><a href="#10-3-2量词" class="headerlink" title="10.3.2量词"></a>10.3.2量词</h5><p>​	用来设定 <strong>某个模式出现的次数</strong></p>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td align="center">0-多</td>
+</tr>
+<tr>
+<td>+</td>
+<td align="center">1-多</td>
+</tr>
+<tr>
+<td>?</td>
+<td align="center">o或1</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td align="center">n</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td align="center">n-多</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td align="center">n-m</td>
+</tr>
+</tbody></table>
+<h5 id="10-3-3字符类"><a href="#10-3-3字符类" class="headerlink" title="10.3.3字符类"></a>10.3.3字符类</h5><table>
+<thead>
+<tr>
+<th align="center">字符</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[abcdefg]</td>
+<td align="center">后面的字符串只要包含[]内的任一字符都返回true</td>
+</tr>
+<tr>
+<td align="center">[a-zA-Z0-9]</td>
+<td align="center">表示a到z，A到Z，0到9都可</td>
+</tr>
+<tr>
+<td align="center">[^a-z]</td>
+<td align="center">括号里面加上^表示取反，除了小写字母以外的字符</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">[0-9]</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">[^0-9]</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">[A-Za-z0-9]</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">[^A-Za-z0-9]</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">[\t\r\n\v\f]</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">[^\t\r\n\v\f]</td>
+</tr>
+</tbody></table>
+<h3 id="10-4修饰符"><a href="#10-4修饰符" class="headerlink" title="10.4修饰符"></a>10.4修饰符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*语法</span></span><br><span class="line"><span class="comment">/表达式/修饰符</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//i  表示不区分大小写</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/a/i</span>.<span class="title function_">test</span>(<span class="string">&#x27;a&#x27;</span>))<span class="comment">//true</span></span><br><span class="line"><span class="comment">//g  表示匹配所有满足正则表达式的结果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//replace替换</span></span><br><span class="line"><span class="comment">//  字符串.replace(/正则表达式/，&#x27;替换的文本&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shou Jian/Freddy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/01/03/WebAPIs/">http://example.com/2022/01/03/WebAPIs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/js/">js</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2022/01/05/Linux%20%E5%9F%BA%E7%A1%80/"><i class="fa fa-chevron-left">  </i><span>Linux 基础</span></a></div><div class="next-post pull-right"><a href="/2021/12/15/JavaScript/"><span>JavaScript 基础</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://s1.vika.cn/space/2022/09/12/e9596066c4794094888ea5e53f712030)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2022 By Shou Jian/Freddy</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
